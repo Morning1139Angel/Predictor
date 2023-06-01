@@ -1,8 +1,9 @@
 `include "predictor.v"
 `include "decoder_8to256.v"
+`include "mux256to1.v"
 
 module phtable(
-    input[7:0] addr,
+    input[8-1:0] addr,
     input wire request,result, clk, taken,
     output prediction
 );
@@ -27,5 +28,7 @@ module phtable(
       );
     end
   endgenerate
+
+  mux256to1 mux(.in(predictor_outputs), .sel(addr), .out(prediction))
 
 endmodule
