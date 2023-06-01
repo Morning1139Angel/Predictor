@@ -1,6 +1,6 @@
 `include "predictor.v"
 
-module table (
+module phtable(
     input[7:0] addr,
     input wire request,result, clk, taken,
     output prediction
@@ -14,7 +14,7 @@ module table (
       predictor inst (
         .enable(predictor_enables[i]),
         .request(request),
-        .result(result).
+        .result(result),
         .clk(clk),
         .taken(taken),
         .prediction(predictor_outputs[i])
