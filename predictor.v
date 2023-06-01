@@ -6,11 +6,11 @@ module predictor(input wire request, result, clk, taken, output reg prediction);
     end
 
     always @(posedge clk) begin
-        if (result) begin
+        if (request) begin
             prediction = state[1];
         end
 
-        if (request ) begin
+        if (result ) begin
             if (taken && state != 2'b11) begin
                 state = state + 1 ;
             end
